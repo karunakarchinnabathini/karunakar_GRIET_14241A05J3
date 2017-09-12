@@ -62,14 +62,14 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void addFirst(Student student) {
-		// Add your implementation here
+		//Add your implementation here
 		if(student==null)
 		throw IllegalArgumentException;
-		/*ArrayList<Student> as=new ArrayList<Student>();
-		as.add(student);
-		for(int i=0;i<students.length;++i)
-		as.add(students[i]);*/
+		StudentGroup(students.length+1);
 		
+		for(int i=students.length-1;i>0;--i)
+		students[i]=students[i+1];
+		students[0]=student;
 	}
 
 	@Override
@@ -77,6 +77,7 @@ public class StudentGroup implements StudentArrayOperation {
 		// Add your implementation here
 		if(student==null)
 		throw IllegalArgumentException;
+		StudentGroup(students.length+1);
 		students[students.length-1]=student;
 	}
 
@@ -96,6 +97,10 @@ public class StudentGroup implements StudentArrayOperation {
 		if(index==students.length-1)
 		{
 		students[index]=null;
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 		return;
 		}
 		else
@@ -103,6 +108,10 @@ public class StudentGroup implements StudentArrayOperation {
 		{
 		students[i]=students[i+1];
 		students[students.length-1]=null;
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 		}
 	}
 
@@ -127,6 +136,10 @@ public class StudentGroup implements StudentArrayOperation {
 		for(i=j;i<students.length-1;++i)
 		students[i]=students[i+1];
 		students[students.length-1]=null;
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 		}
 	}
 
@@ -137,6 +150,10 @@ public class StudentGroup implements StudentArrayOperation {
 		throw IllegalArgumentException;
 		for(int i=index+1;i<students.length;++i)
 		students[i]=null;
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 	}
 
 	@Override
@@ -161,6 +178,10 @@ public class StudentGroup implements StudentArrayOperation {
 		students[i]=students[i+1];
 		students[students.length-1]=null;
 		}
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 	}
 
 	@Override
@@ -172,6 +193,10 @@ public class StudentGroup implements StudentArrayOperation {
 		students[i]=students[index];
 		for(int i=students.length-1;i>students.length-index;--i)
 		students[i]=null;
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 	}
 
 	@Override
@@ -192,7 +217,10 @@ public class StudentGroup implements StudentArrayOperation {
 		students[i]=students[i+j];
 		for(i=students.length-1;i>students.length-j;i--)
 		students[i]=null;
-		
+		Student[] myStudents;
+		for(int i=0,j=0;students[i]!=null;++i)
+		myStudents[j++]=students[i];
+		setStudents(myStudents);
 	}
 
 	@Override
